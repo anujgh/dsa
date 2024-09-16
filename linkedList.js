@@ -1,4 +1,3 @@
-//----------------------------------
 class Node {
     constructor(value) {
         this.value = value;
@@ -70,15 +69,31 @@ class LinkedList {
         }
         return temp;
     }
+
+    get(index) {
+        if(index < 0 || index > this.length) return undefined;
+        let temp = this.head;
+        for(let i = 0 ; i < index ; i++){
+            temp = temp.next
+        }
+        return temp;
+    }
+
+    set(index,value){
+        let temp = this.get(index)
+        if(temp){
+            temp.value = value;
+            return true;
+        }
+        return false;
+    }
     
     getList(){
         return this
     }
 }
 
-// --------------------
-// Testing.............
-// --------------------
+
 
 let myLinkedList = new LinkedList(5)
 myLinkedList.push(4)
@@ -103,3 +118,11 @@ console.log("after shift the linked lis is: ", myLinkedList.getList())
 
 console.log("shifted node: ",myLinkedList.shift())
 console.log("after shift the linked lis is: ", myLinkedList.getList())
+
+myLinkedList.push(6)
+myLinkedList.push(7)
+myLinkedList.push(8)
+myLinkedList.push(9)
+console.log('befor set : ', myLinkedList.getList())
+myLinkedList.set(1,12)
+console.log('after set: ', myLinkedList.getList())
